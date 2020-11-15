@@ -1,6 +1,6 @@
-package Motivation;
+package f0_thread;
 
-public class PrintRunnable implements Runnable {
+public class f0_3_PrintRunnable implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
