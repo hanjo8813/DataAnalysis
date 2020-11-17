@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class f2_app {
+public class f2_1_app {
 	public static void main(String[] args) {
 		List<Integer> numbers = new ArrayList<Integer>();
 		for (int i=0; i<100; i++) {
@@ -48,6 +48,9 @@ public class f2_app {
 		// 스트림의 인자를 모두 돌려서 한번 쓰면 스트림에서 삭제되는 구조. -> 수행시 스트림 clear
 		// 아래는 e -> { System.out.println(e); } 을 넣은것과 동일
 		//s.forEach( System.out::println );
-		
 	}
 }
+
+// 스트림 메소드 filter, map, collect, forEach 실습
+//0~99 배열을 스트림에 넣고 각 요소의 짝수만 3배하고 그 스트림을 hashset 구조로 바꾸기
+//또는 가공된 배열을 모두 출력하기
