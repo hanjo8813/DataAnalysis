@@ -1,11 +1,15 @@
 package f2_stream;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+// map, forEach, filter, toArray, collect 예제
 public class f2_3_app {
-
 	public static void main(String[] args) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		// 리스트에 100개의  숫자를 넣는다
@@ -69,7 +73,24 @@ public class f2_3_app {
 		arr = s3.toArray(Integer[]::new);
 		for(int i=0; i<arr.length; i++)
 			System.out.println(arr[i]);
+		
+		// 예제 5
+		// 각각요소를 +2 하고 리스트에 담기
+		// Collectors.toList() 사용.
+		List<Integer> arr2;
+		arr2 = list.stream()
+				.map(e -> { return e+2; })
+				.collect(Collectors.toList());
+		System.out.println(arr2);
+		
+		// 예제 6
+		// 10으로 나눈 나머지를 집합Set에 담기
+		// Collectors.toSet() 사용
+		Set<Integer> arr3;
+		arr3 = list.stream()
+				.map(e -> e%10 )
+				.collect(Collectors.toSet());
+		System.out.println(arr3);
+		
 	}
 }
-
-//각종 스트림 예제들

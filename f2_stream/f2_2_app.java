@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Stream;
 
+//스트림 메소드 reduce, max, min 실습
 public class f2_2_app {
 	public static void main(String[] args) {
 		Random r = new Random();
@@ -16,7 +17,7 @@ public class f2_2_app {
 		
 		// BinaryOperator
 		// 람다식 : 입력 - 인자 e1 e2 / 출력 - 둘 중에 큰값
-		// reduce : 입력 - 인자 하나 / 출력 - 그 인자 출력
+		// reduce : 입력 - 인자 하나 / 출력 - 그 인자 출력 >>> 두개받고 하나는 삭제
 		Stream<Integer> s = list.stream();
 		int max = s.reduce(
 				(e1,e2)-> {
@@ -61,4 +62,4 @@ public class f2_2_app {
 	}
 }
 
-//스트림 메소드 reduce, max, min 실습
+

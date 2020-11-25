@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+//스트림 메소드 filter, map, collect, forEach 실습
+//0~99 배열을 스트림에 넣고 각 요소의 짝수만 3배하고 그 스트림을 hashset 구조로 바꾸기
+//또는 가공된 배열을 모두 출력하기
 public class f2_1_app {
 	public static void main(String[] args) {
 		List<Integer> numbers = new ArrayList<Integer>();
@@ -51,6 +54,4 @@ public class f2_1_app {
 	}
 }
 
-// 스트림 메소드 filter, map, collect, forEach 실습
-//0~99 배열을 스트림에 넣고 각 요소의 짝수만 3배하고 그 스트림을 hashset 구조로 바꾸기
-//또는 가공된 배열을 모두 출력하기
+
