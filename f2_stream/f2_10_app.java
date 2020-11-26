@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 import java.util.*;
 
 // parallel, sequential, isParallel 
-// mapToInt
+// mapToInt, boxed
 public class f2_10_app {
 	public static void main(String[] args) {
 		List<Integer> numbers = new ArrayList<Integer>();
@@ -26,18 +26,28 @@ public class f2_10_app {
 			numbers2.add(i);
 		}
 		
-		// 스트림을 mapToInt로 아예 Int형으로 바꿔버린다
+		// unboxing : Stream<Integer> -> IntStream
+		// mapToInt : 스트림을 아예 Int형으로 바꿔버린다
 		// 그러면 Int 자료형의 메소드인 average 등등을 사용할 수 있게되는것.
-		Double dum = numbers2.stream().mapToInt(i -> i).average().getAsDouble();
+		Double dum = numbers2.stream()
+				.mapToInt(i -> i)
+				.average().getAsDouble();
 		System.out.println(dum);
 		
 		// Int형으로 바꾼담에 또 IntSummaryStatistics형으로 바꾼다
 		// 그리고 IntSummaryStatistics형의 메소드를 사용해보기.
-		IntSummaryStatistics stat = numbers2.stream().mapToInt(i -> i).summaryStatistics();
+		IntSummaryStatistics stat = numbers2.stream()
+				.mapToInt(i -> i)
+				.summaryStatistics();
 		System.out.println("AVG: " + stat.getAverage());
 		System.out.println("CNT: " + stat.getCount());
 		System.out.println("MAX: " + stat.getMax());
 		System.out.println("MIN: " + stat.getMin());
 		System.out.println("SUM: " + stat.getSum());
+		
+		// boxing : IntStream -> Stream<Integer>
+		// boxed
+		//스트림인트 > 인트스트림 > 스트림인트
+		numbers2.stream().mapToInt(i -> i).boxed();
 	}
 }
