@@ -21,7 +21,7 @@ public class f2_8_app {
 		// Short Circuit evaluation -> 병렬수행하다가 조건값이 나타나면 바로 종료됨.
 		// Terminal Operation 이다. --> noneMatch, allMatch 등등..
 		boolean isAllOver100 = numbers.stream()
-				.anyMatch(e->e<0);
+				.noneMatch(e->e<0);
 		System.out.println(isAllOver100);
 		
 		// 예제 2 : peek
@@ -46,6 +46,7 @@ public class f2_8_app {
 				.dropWhile( e-> e<70)
 				.collect(Collectors.toList());
 		System.out.println(list3);
+		System.out.println();
 		
 // ---------------------------------------------------------------------
 		

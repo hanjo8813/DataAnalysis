@@ -66,8 +66,5 @@ public class f2_6_app {
 				.distinct()
 				.collect(Collectors.toList());
 		System.out.println(new_list4);
-
-		
 	}
-
 }

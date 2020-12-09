@@ -22,8 +22,9 @@ public class f2_4_app {
 		System.out.println(ps.findFirst().get());
 
 		// 위에서 한것과 동일
-		numbers.stream().findFirst().ifPresent(e -> {
-			System.out.println(e);
-		});
+		Stream<Integer> st = numbers.stream();
+		st.findFirst().ifPresent(
+				e -> { System.out.println(e);}
+				);
 	}
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// data 파일을 읽어서 모오든 왼/오 원소를 리스트하나에 저장하기
 public class f2_7_app {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("d:\\data.txt"));
@@ -36,7 +37,7 @@ public class f2_7_app {
 							return a.stream();
 							})
 				.sorted()
-				.limit(1)
+				.limit(100)
 				.collect(Collectors.toList());
 
 		System.out.println(listA);

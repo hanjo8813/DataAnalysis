@@ -17,13 +17,20 @@ public class f2_11_app {
 			map.put(String.valueOf(i), grades);
 		}
 		
+		map.values().stream()
+		.flatMap(e->e.stream())
+		.forEach(e -> System.out.println(e));
+		System.out.println();
+		
 		// 해쉬맵 엔트리셋 스트림을 만든다
 		// 엔트리셋의 값을 불러오고 -> 그걸 flatMap으로 스트림형태로 매핑
 		map.entrySet().stream()
 		.flatMap( e -> e.getValue().stream() )
 		.forEach( e -> System.out.println(e) );
+		System.out.println();
 		
 		// 엔트리셋의 값을 스트림 으로 불러오고 , mapToInt로 Int스트림으로 매핑.
+		// 원래 char인 키값을 int로 바꾸는것..
 		map.entrySet().stream()
 		.flatMapToInt( e -> e.getValue().stream().mapToInt(i -> i) )
 		.forEach( e -> System.out.println(e) );

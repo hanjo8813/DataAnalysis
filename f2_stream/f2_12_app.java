@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-// collect의 Supplier, Accumulator, Combiner 트릭
+// collect의 Supplier, Accumulator, Combiner 컬렉터 트릭
 // Collectors 메소드의 maxBy, minBy
 // 더 다양한 Collectors 메소드
 public class f2_12_app {
@@ -25,7 +25,7 @@ public class f2_12_app {
 						// Accumulator (매핑)
 						// numbers 스트림의 원소는 i이다
 						// i를 스트링으로 변환 후 StringBuilder("")에 추가하는것.
-						(StringBuilder sb, Integer i) -> {
+						( sb,  i) -> {
 							sb.append(String.valueOf(i));
 						}, 
 						
@@ -44,7 +44,7 @@ public class f2_12_app {
 						() -> new AtomicInteger(),
 						
 						(AtomicInteger at, Integer i) -> {
-							at.addAndGet(i);
+							at.set(i);
 						}, 
 						
 						// addAndGet -> p1 += p2 느낌
@@ -53,7 +53,7 @@ public class f2_12_app {
 							p1.addAndGet(p2.get());
 						});
 		System.out.println(ret2);
-
+		
 		// 3
 		// 0~9의 숫자 중 최대값을 뽑아내기
 		// Collectors 메소드의 maxBy
@@ -86,6 +86,7 @@ public class f2_12_app {
 
 		// 5
 		// 얘네들 반환값 Int, Long, Double로 여러가지임
+		// Counting을 제외하고 e->e 람다식을 입력해주자
 		System.out.println(numbers.stream().collect(Collectors.counting()));
 		System.out.println(numbers.stream().collect(Collectors.averagingDouble(e -> e)));
 		System.out.println(numbers.stream().collect(Collectors.averagingInt(e -> e)));
@@ -96,17 +97,5 @@ public class f2_12_app {
 		System.out.println(numbers.stream().collect(Collectors.summarizingDouble(e -> e)));
 		System.out.println(numbers.stream().collect(Collectors.summarizingInt(e -> e)));
 		System.out.println(numbers.stream().collect(Collectors.summarizingLong(e -> e)));
-
-//		stream.collect(collector);
-//		stream.collect(supplier, accumulator, combiner);
-//		
-//		
-//		stream.reduce(accumulator);
-//		stream.reduce(identity, accumulator);
-//		stream.reduce(identity, accumulator, combiner);
-//		
-
-//		stream.spliterator();
-
 	}
 }

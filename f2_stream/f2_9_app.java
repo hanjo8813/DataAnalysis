@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 // 스트림의 자료형이 내가 정의한 클래스일때 정렬기준/비교기준은? (sorted)
-
+// 이메일 데이터를 생성하고 왼쪽 기준으로 정렬해보기
 public class f2_9_app {
 	public static void main(String[] args) {
 		ArrayList<f2_9_Email> emails = new ArrayList<f2_9_Email>();

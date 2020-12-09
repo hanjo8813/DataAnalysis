@@ -14,7 +14,7 @@ public class f2_14_app {
 
 		// collect에서 S->A->C 트릭을 쓰지 않고 joining으로 한번에 다 붙인 문자열 반환하기
 		// joining에 구분자를 입력하면 구분자가 추가된 문자열 반환.
-		// joining(중간구분자, 시작문자, 끝 문자)
+		// joining(중간구분자, 시작 문자, 끝 문자)
 		String joinedStr = numbers.stream()
 				.map(e -> String.valueOf(e))
 				.collect(Collectors.joining());
