@@ -24,6 +24,8 @@
 |.mapToInt(e->e)|스트림<Int>를 Int스트림으로 변환 (다른 자료형도 가능) / Int스트림의 계산 메소드를 편하게 사용하려고 변환하는 것.|
 |.boxed()|Int스트림을 스트림<Int>로 변환 (다른 자료형도가능)|
 
+<br>
+
 ## Stream의 메소드 정리
 
 >### 입력값 없는 메소드 
@@ -39,6 +41,8 @@
 |.isSequential()|일반 스트림이면 true 반환|
 |.boxed()|Int스트림을 스트림<Int>로 변환 (다른 자료형도가능)|
 
+<br>
+
 >### 입력값이 e인 메소드
 
 |메소드|설명|
@@ -49,6 +53,7 @@
 |.close()|스트림을 닫는다.|
 |.onClose(러너블)|입력으로 러너블을 받음 / TO가 스트림을 종료시켜도 스트림을 close시키는건 아님. / 따라서 .close()로 스트림이 닫힐 때 비로소 실행됨|
 
+<br>
 
 >### Function : e -> e / 값 하나를 받고 하나를 리턴하는 람다식
 
@@ -59,6 +64,7 @@
 |.mapToInt(e->e)|스트림<Int>를 Int스트림으로 변환 (다른 자료형도 가능)|
 |.flatMapToInt()|최종은 인트스트림이 반환되야함 / 인자 -> 스트림 -> Int스트림 / ex) e -> e.getValue().stream().mapToInt(i -> i)|
 
+<br>
 
 >### Predicate : e -> bool / bool 값 리턴되는 조건 람다식
 
@@ -70,6 +76,8 @@
 |.takeWhile()|조건 범위에 해당하는 인자를 모두 저장.|
 |.dropWhile()|조건 범위에 해당하는 인자를 모두 버림|
 
+<br>
+
 >### Consumer : e -> 소비 / 리턴 없이 모두 소비되는 람다식
 
 |메소드|설명|
@@ -78,11 +86,15 @@
 |.ifPresent()|TO. 해당 인자가 존재시 발동됨 / 입력값 없어도 사용가능|
 |.peek()|forEach와 비슷하나 소비하고도 계속 스트림 사용가능.|
 
+<br>
+
 >### BinaryOperator : e1, e2 -> e / 값 두 개를 입력받고 하나만 리턴하는 람다식
 
 |메소드|설명|
 |---|---|
 |.reduce()|람다식에서 결과값 하나 나오면 하나만 저장, 최종적으로 값은 하나만 남게됨|
+
+<br>
 
 >### Compartaor : e1, e2 -> 1,0,-1 / 값 두 개를 입력받아 비교 후 1, 0, -1을 리턴하는 람다식
 
@@ -92,15 +104,19 @@
 |.min()|작은것만 저장|
 |.sorted()|입력값 없이 사용하면 오름차순 정렬됨. / Compartor로 정렬기준 설정가능.|
 
+<br>
+
 >### Supplier : () -> 자료구조 / 스트림을 다른 자료구조로 바꿔 리턴하는 람다식
 
 |메소드|설명|
 |---|---|
 |.toArray()|스트림을 배열로 변환|
 
+<br>
+
 ---
 
-# Collector
+# Collectors
 
 ## R Collector
 - collect()의 기본 입력값임.
@@ -116,9 +132,8 @@
 - downstream(Collector) : value(리스트)를 가지고 계산, 조건을 달아서 value를 가공
 
 ## toMap Collector
-- Default 반환값은 Map<키 자료형, 원소 리스트> 
+- Default 반환값은 Map<키 자료형, 원소 리스트>
 - 그루핑은 value를 리스트에 일단 때려박는데(조작이 불가), toMap에선 value를 정의해줄 수 있다
-
 - KeyMapper(Function) : key를 정의
 - valueMapper(Function) : value를 정의 (자료형 바꾸던가...)
 - merge(BinaryOperator) : 두 개의 정의된 value를 가지고 합치고 하나의 value를 반환
@@ -139,17 +154,23 @@
 |.toList()|스트림을 리스트로 반환|
 |.toSet()|스트림을 집합으로 반환|
 
+<br>
+
 >### 입력값이 e인 메소드
 
 |메소드|설명|
 |---|---|
 |.joining()|인자들을 모두 합쳐 문자열로 반환 -> (중간구분자, 시작, 끝)|
 
+<br>
+
 >### BinaryOperator : e1, e2 -> e / 값 두 개를 입력받고 하나만 리턴하는 람다식
 
 |메소드|설명|
 |---|---|
 |.reducing(기본값, BinaryOperator)| 기본값이 인덱스 0의 값이라고 생각하면 됨 / 무조건 기본값 한번 껴서 계산함|
+
+<br>
 
 >### Compartaor : e1, e2 -> 1,0,-1 / 값 두 개를 입력받아 비교 후 1, 0, -1을 리턴하는 람다식
 
@@ -158,17 +179,23 @@
 |.maxBy(C)|큰것만 저장|
 |.minBy(C)|작은것만 저장|
 
+<br>
+
 >### Supplier : () -> 자료구조 / 스트림을 다른 자료구조로 바꿔 리턴하는 람다식
 
 |메소드|설명|
 |---|---|
 |toCollection(S)|바꾸고 싶은 자료구조를 리턴하는 람다식을 입력해야함.|
 
+<br>
+
 >### R Collector 
 
 |메소드|설명|
 |---|---|
 |.collect(S, BC, BC)|기본인 R 컬렉터 입력받는다.|
+
+<br>
 
 >### built-in Collector 
 
@@ -178,3 +205,5 @@
 |.partitioningBy(F, S, C)|Default 반환값은 Map<boolean, 원소 리스트> / 키가 true, false만 존재|
 |.mapping(F, C)|키 인자를 받아서 value를 가공한다|
 |.filtering(F, C)|조건을 만족하는 키의 value만 가공한다.|
+
+<br>
