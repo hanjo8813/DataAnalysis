@@ -120,30 +120,33 @@
 
 ## R Collector
 - collect()의 기본 입력값임.
-- Collector == Supplier, Accumulaor, Combiner 세가지로 이루어져있음 
-- Supplier : () -> 자료구조 / 형을 변환해주고
-- Accumulaor(BiConsumer) : (변환자료형,e) -> 소비 / 변환된 자료형에 인자를 넣는다
-- Combiner(BiConsumer) : (e1,e2) -> 소비 / 두 변환된 자료형을 합치는 과정
+- Collector == (Supplier, Accumulaor, Combiner) 3가지로 입력값을 가짐. 
+1. Supplier : () -> 자료구조 / 형을 변환해주고
+2. Accumulaor(BiConsumer) : (변환자료형,e) -> 소비 / 변환된 자료형에 인자를 넣는다
+3. Combiner(BiConsumer) : (e1,e2) -> 소비 / 두 변환된 자료형을 합치는 과정
 
 ## built-in Collector
 - Function.identity() == e->e
-- Classifier(Function) : key를 정의
-- mapFactory(Supplier) : 반환되는 자료형을 정의
-- downstream(Collector) : value(리스트)를 가지고 계산, 조건을 달아서 value를 가공
+- 3가지 입력값을 가진다.
+1. Classifier(Function) : key를 정의
+2. mapFactory(Supplier) : 반환되는 자료형을 정의
+3. downstream(Collector) : value(리스트)를 가지고 계산, 조건을 달아서 value를 가공
 
 ## toMap Collector
 - Default 반환값은 Map<키 자료형, 원소 리스트>
 - 그루핑은 value를 리스트에 일단 때려박는데(조작이 불가), toMap에선 value를 정의해줄 수 있다
-- KeyMapper(Function) : key를 정의
-- valueMapper(Function) : value를 정의 (자료형 바꾸던가...)
-- merge(BinaryOperator) : 두 개의 정의된 value를 가지고 합치고 하나의 value를 반환
-- Supplier : 반환되는 자료형을 정의
+- 4가지 입력값을 가진다.
+1. KeyMapper(Function) : key를 정의
+2. valueMapper(Function) : value를 정의 (자료형 바꾸던가...)
+3. merge(BinaryOperator) : 두 개의 정의된 value를 가지고 합치고 하나의 value를 반환
+4. Supplier : 반환되는 자료형을 정의
 
 ## teeing Collector
 - 컬렉터 두 개를 합치고 싶을 때 사용
-- Collector1
-- Collector2
-- merge(BinaryOperator) : 위의 두 컬렉터를 받아서 합친 후 원하는 형태로 반환하면된다. 
+- 3가지의 입력값을 가진다.
+1. Collector1
+2. Collector2
+3. merge(BinaryOperator) : 위의 두 컬렉터를 받아서 합친 후 원하는 형태로 반환하면된다. 
 
 ## Collectors 메소드 정리
 
