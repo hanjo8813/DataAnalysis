@@ -17,6 +17,7 @@ public class f0_1_app {
 		System.out.println(t.getId());
 		// 이름 바꾸기
 		t.setName("T1");
+		System.out.println(t.getName());
 		System.out.println(t.getId());
 		// t 스레드의 상태->상태의이름 출력하기
 		System.out.println(t.getState().name());
@@ -27,6 +28,8 @@ public class f0_1_app {
 		System.out.println("t : " + t.getPriority());
 		// 모든 스레드 2초간 정지
 		Thread.sleep(2000);
+		System.out.println(Thread.currentThread().getState().name());
+
 		System.out.println(t.getState().name());
 	}
 }

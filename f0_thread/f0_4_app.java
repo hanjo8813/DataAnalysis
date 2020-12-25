@@ -11,6 +11,7 @@ public class f0_4_app {
 		new Thread(new f0_4_MyRunnable()).start();
 		new Thread(new f0_4_MyRunnable()).start();
 		new Thread(new f0_4_MyRunnable()).start();
+		// 스레드 동작이 너무 빨라서 메인스레드 끝나기전에 메인에 sleep 한번 걸어주자
 		Thread.sleep(3000);
 		System.out.println(count);
 	}
